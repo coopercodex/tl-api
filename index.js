@@ -6,6 +6,12 @@ const cors = require('cors')
 const PORT = process.env.PORT || 4000
 
 app.use("/api/tickets", tickets)
+
+app.use((req, res, next) => {
+     res.setHeader("Access-Control-Allow-Origin", "*" )
+     res.setHeader("Access-Control-Allow-Methods", "*" )
+     res.setHeader("Access-Control-Allow-Headers", "*" )
+})
 app.use(cors())
 
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`))
